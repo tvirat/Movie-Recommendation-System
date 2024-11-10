@@ -19,15 +19,17 @@ class RecommendationForm extends Component {
       },
       async () => {
         try {
-          const apiUrl = process.env.REACT_APP_API_URL;
-          const response = await fetch(`${apiUrl}/api-get-recommendations`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              movieTitle: this.state.movieTitle,
-              numOfRecs: this.state.numRec,
-            }),
-          });
+          const response = await fetch(
+            `http://127.0.0.1:5000/api-get-recommendations`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                movieTitle: this.state.movieTitle,
+                numOfRecs: this.state.numRec,
+              }),
+            }
+          );
 
           // Check if response is ok before parsing JSON
           if (!response.ok) {
@@ -54,12 +56,12 @@ class RecommendationForm extends Component {
     return (
       <div>
         <form id="recommendation-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="directions">
+          <label htmlFor="movieInput">
             Type the movie title in the text box and specify the number of
             recommendations
           </label>
           <br />
-          <label htmlFor="movieName">Movie Title</label>
+          <label htmlFor="movieInput">Movie Title</label>
           <input type="text" name="movieInput" id="movieInput" />
           <br />
           <label htmlFor="numOfRecs">Number of Recommendations: </label>
