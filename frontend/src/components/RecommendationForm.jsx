@@ -19,7 +19,8 @@ class RecommendationForm extends Component {
       },
       async () => {
         try {
-          const response = await fetch("/api-get-recommendations", {
+          const apiUrl = process.env.REACT_APP_API_URL;
+          const response = await fetch(`${apiUrl}/api-get-recommendations`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
