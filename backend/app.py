@@ -5,6 +5,11 @@ import main
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/")
+def app_run_message():
+    return "<p>The backend is running successfully!</p>"
+
+
 @app.route('/api-get-recommendations', methods=['POST'])
 def get_recommendations():
     data = request.get_json()
@@ -20,5 +25,6 @@ def get_recommendations():
     except AttributeError as e: 
         print("Error: ", e) 
         return jsonify({"error": "Internal server error"}), 500
+    
 if __name__ == '__main__':
     app.run(debug=False)
