@@ -11,16 +11,32 @@ class RecommendationForm extends Component {
 
   getValues = () => {
     const numOfRecs = document.getElementById("numOfRecs").value;
-    this.setState({
-      movieTitle: document.getElementById("movieInput").value,
-      numRec: numOfRecs || this.state.numRec,
-    });
-    Event.pre;
+    this.setState(
+      {
+        movieTitle: document.getElementById("movieInput").value,
+        numRec: numOfRecs || this.state.numRec,
+      },
+      () => {
+        response = fetch("/api-get-recommendations", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            movieTitle: this.state.movieTitle,
+            numOfRecs: this.state.numRec,
+          }),
+        });
+      }
+    );
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.getValues();
   };
 
   render() {
     return (
-      <form id="recommendation-form">
+      <form id="recommendation-form" onSubmit={this.handleSubmit}>
         <label htmlFor="directions">
           Type the movie title in the text box and specify the number of
           recommendations
@@ -32,13 +48,7 @@ class RecommendationForm extends Component {
         <label htmlFor="numOfRecs">Number of Recommendations: </label>
         <input type="text" name="numOfRecs" id="numOfRecs" />
         <br />
-        <button
-          id="submitButton"
-          type="submit"
-          onClick={() => this.getValues()}
-          onSubmit={() => event.preventDefault()}
-          formMethod="post"
-        >
+        <button id="submitButton" type="submit" formMethod="POST">
           Submit
         </button>
       </form>
