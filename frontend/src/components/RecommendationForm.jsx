@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./RecommendationForm.css";
 
 class RecommendationForm extends Component {
   constructor() {
@@ -52,28 +53,48 @@ class RecommendationForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="recommendation-container">
+        <h2 className="form-title">Movie Recommendation System</h2>
         <form id="recommendation-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="movieInput">
+          <p className="form-description">
             Type the movie title in the text box and specify the number of
             recommendations
-          </label>
-          <br />
-          <label htmlFor="movieInput">Movie Title</label>
-          <input type="text" name="movieInput" id="movieInput" />
-          <br />
-          <label htmlFor="numOfRecs">Number of Recommendations: </label>
-          <input type="text" name="numOfRecs" id="numOfRecs" />
-          <br />
-          <button id="submitButton" type="submit" formMethod="POST">
+          </p>
+          <div className="form-group">
+            <label htmlFor="movieInput">Movie Title</label>
+            <input
+              type="text"
+              name="movieInput"
+              id="movieInput"
+              placeholder="Enter a movie title"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="numOfRecs">Number of Recommendations</label>
+            <input
+              type="text"
+              name="numOfRecs"
+              id="numOfRecs"
+              placeholder="3"
+            />
+          </div>
+          <button id="submitButton" type="submit">
             Submit
           </button>
         </form>
         {/* Displaying the recommendations */}
-        <div>
-          {this.state.recommendationsList.map((recommendation, index) => (
-            <div key={index}>{recommendation}</div>
-          ))}
+        <div className="recommendations-list">
+          {this.state.recommendationsList.length > 0 ? (
+            this.state.recommendationsList.map((recommendation, index) => (
+              <div key={index} className="recommendation-item">
+                {recommendation}
+              </div>
+            ))
+          ) : (
+            <div className="loading">
+              Enter a movie title to get recommendations
+            </div>
+          )}
         </div>
       </div>
     );
