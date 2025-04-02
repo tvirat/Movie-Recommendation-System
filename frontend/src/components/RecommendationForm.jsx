@@ -20,7 +20,7 @@ class RecommendationForm extends Component {
       },
       async () => {
         try {
-          apiUrl = process.env.NODE_ENV;
+          const apiUrl = import.meta.env.VITE_API_URL;
           const response = await fetch(`${apiUrl}/api-get-recommendations`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -36,8 +36,24 @@ class RecommendationForm extends Component {
           }
 
           // Parse JSON response
+          // Parse JSON response
           const recommendations = await response.json();
-          this.setState({ recommendationsList: recommendations });
+          console.log("Raw API response:", recommendations);
+
+          // Check the response format and extract just the titles
+          if (Array.isArray(recommendations)) {
+            // If it's an array of objects with title property
+            const movieTitles = recommendations.map((movie) =>
+              typeof movie === "object" && movie.title ? movie.title : movie
+            );
+            this.setState({ recommendationsList: movieTitles });
+          } else {
+            // Handle case where response isn't in expected format
+            console.error("Unexpected response format:", recommendations);
+            this.setState({
+              recommendationsList: ["No recommendations found"],
+            });
+          }
         } catch (error) {
           console.error("Fetch error: ", error);
           this.setState({ recommendationsList: [] });
