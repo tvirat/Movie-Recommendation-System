@@ -26,11 +26,9 @@ I built this project to **explore different recommendation algorithms** and unde
 📦 movie-recommendation-system
 ├── backend/                # Flask backend
 │   ├── app.py             # Main Flask application
-│   ├── model.py           # Collaborative filtering & classifier model
+│   ├── main.py           # Collaborative filtering & classifier model
 │   ├── requirements.txt   # Backend dependencies
 │   ├── config.py          # API keys and environment variables
-│   ├── templates/         # HTML templates (if applicable)
-│   ├── static/            # Static files (CSS, JS, Images)
 │   └── ...
 ├── frontend/              # React + Vite frontend
 │   ├── src/
@@ -53,11 +51,11 @@ I built this project to **explore different recommendation algorithms** and unde
 - **Frontend:** React + Vite (deployed on **Vercel**)
 - **Backend:** Python + Flask (deployed on **Render**)
 - **Recommendation Models:**
-  - **Collaborative Filtering** using old movie dataset (10,000+ movies, user ratings)
+  - **Collaborative Filtering** using an open-source old movie dataset (10,000+ movies, user ratings)
   - **Random Classifier Model** with `scikit-learn`
-  - **TMDb API** for new movie recommendations
+  - **TMDb API** for newly released movie recommendations
 - **Main Libraries Used:** `pandas`, `numpy`, `scikit-learn`, `Flask`, `requests`
-- **Database:** Stored movie dataset in a structured format
+- **Database:** MySQL for storing movie dataset in a structured format
 
 ---
 
@@ -95,13 +93,15 @@ npm run dev  # Start the React app
 ---
 
 ## 🚀 Usage Guide (Deployed Version)
-**Frontend:** [Live on Vercel](https://your-frontend-url.vercel.app)  
-**Backend:** [Live on Render](https://your-backend-url.onrender.com)
+**Frontend:** [Live on Vercel]([https://your-frontend-url.vercel.app](https://my-movie-recommendation-system.vercel.app/))  
+**Backend:** [Live on Render]([https://your-backend-url.onrender.com](https://movie-recommendation-system-umw3.onrender.com/))
 
 ### How to Use
-1. Enter a movie name.
-2. Enter the number of recommendations required.
-4. Click on submit to get recommendations.
+1. Ensure that the backend is running. (It should say `The backend is running successfully!`)
+2. Go to the frontend link.
+3. Enter a movie name.
+4. Enter the number of recommendations required.
+5. Click on submit to get recommendations.
 
 ![UI Preview](https://via.placeholder.com/800x400.png?text=App+Screenshot)
 
