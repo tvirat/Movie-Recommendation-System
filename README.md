@@ -93,8 +93,8 @@ npm run dev  # Start the React app
 ---
 
 ## 🚀 Usage Guide (Deployed Version)
-**Frontend:** [Live on Vercel]([https://your-frontend-url.vercel.app](https://my-movie-recommendation-system.vercel.app/))  
-**Backend:** [Live on Render]([https://your-backend-url.onrender.com](https://movie-recommendation-system-umw3.onrender.com/))
+- **Frontend:** [Live on Vercel](https://my-movie-recommendation-system.vercel.app/)
+- **Backend:** [Live on Render](https://movie-recommendation-system-umw3.onrender.com/)
 
 ### How to Use
 1. Ensure that the backend is running. (It should say `The backend is running successfully!`)
@@ -103,7 +103,8 @@ npm run dev  # Start the React app
 4. Enter the number of recommendations required.
 5. Click on submit to get recommendations.
 
-![UI Preview](https://via.placeholder.com/800x400.png?text=App+Screenshot)
+![UI Preview](https://github.com/user-attachments/assets/0e597a8d-766f-4faa-a301-09aca8e13df9)
+
 
 ---
 
